@@ -1,0 +1,113 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "ackintosh/ganesha": "^1.2",
+        "doctrine/dbal": "^3.1",
+        "ensi/guzzle-multibyte": "^0.1.0",
+        "ensi/laravel-ensi-filesystem": "^0.3.0",
+        "ensi/laravel-initial-event-propagation": "^0.2",
+        "ensi/laravel-phprdkafka": "^0.2",
+        "ensi/laravel-phprdkafka-consumer": "^0.2",
+        "ensi/laravel-phprdkafka-producer": "^0.2",
+        "ensi/laravel-serve-swagger": "^0.2.0",
+        "ensi/laravel-stdout-logs-helper": "^0.2.0",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^9.3",
+        "laravel/octane": "^1.2",
+        "laravel/tinker": "^2.7",
+        "spatie/laravel-query-builder": "^5.0",
+        "lab/posts-client": "dev-master",
+        "lab/comments-client": "dev-master"
+    },
+    "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.8",
+        "beyondcode/laravel-dump-server": "^1.6",
+        "ensi/laravel-openapi-client-generator": "^0.12.0",
+        "ensi/laravel-openapi-testing": "^0.2.0",
+        "ensi/openapi-client-generator-php-templates": "^0.2",
+        "ensi/laravel-openapi-server-generator": "^2.0",
+        "ensi/openapi-server-generator-templates": "^0.2",
+        "ensi/test-factories": "^0.2.1",
+        "fakerphp/faker": "^1.9.1",
+        "friendsofphp/php-cs-fixer": "^3.2",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^6.1",
+        "pestphp/pest": "^1.15",
+        "pestphp/pest-plugin-laravel": "^1.1",
+        "pestphp/pest-plugin-parallel": "^0.3.0",
+        "php-parallel-lint/php-var-dump-check": "^0.5.0",
+        "phpunit/phpunit": "^9.5.10",
+        "spatie/laravel-ignition": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://gitlab.com/greensight/ensi/packages/laravel-ensi-filesystem.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://gitlab.com/greensight/ensi/packages/openapi-client-generator-php-templates.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://gitlab.com/greensight/ensi/packages/openapi-server-generator-templates.git"
+        }
+    ],
+    "scripts": {
+        "cs": "php-cs-fixer fix --config .php-cs-fixer.php",
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ],
+        "psalm": "psalm",
+        "test": "php artisan test --parallel",
+        "test-coverage": "XDEBUG_MODE=coverage php artisan test --parallel --coverage",
+        "test-ci": "XDEBUG_MODE=coverage php artisan test --parallel --coverage-clover=build/clover.xml --coverage-html=build/report"
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "platform": {
+            "php": "8.1"
+        },
+        "platform-check": false,
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/package-versions-deprecated": true,
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

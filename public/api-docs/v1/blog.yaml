@@ -1,0 +1,71 @@
+PostDetailResponse:
+  type: object
+  properties:
+    data:
+      $ref: '#/PostDetail'
+  required:
+    - data
+
+PostDetail:
+  type: object
+  properties:
+    code:
+      type: string
+    title:
+      type: string
+    text:
+      type: string
+    author:
+      type: string
+    author_id:
+      type: string
+    created_at:
+      type: string
+    tags:
+      type: array
+      items:
+        $ref: '#/Tag'
+    comments:
+      type: array
+      items:
+        $ref: '#/Comment'
+  required:
+    - code
+    - title
+    - text
+    - author
+    - author_id
+    - created_at
+    - tags
+    - comments
+
+Tag:
+  type: object
+  properties:
+    id:
+      type: integer
+    name:
+      type: string
+  required:
+    - id
+    - name
+
+Comment:
+  type: object
+  properties:
+    id:
+      type: integer
+    text:
+      type: string
+    author:
+      type: string
+    author_id:
+      type: string
+    created_at:
+      type: string
+  required:
+    - id
+    - text
+    - author
+    - author_id
+    - created_at

@@ -1,0 +1,82 @@
+openapi: 3.0.3
+info:
+  title: Ensi Blog Api Service
+  contact:
+    name: API Support
+    url: https://ensi.tech/contacts
+    email: mail@greensight.ru
+  version: 1.0.0
+  description: Ensi Blog Api Service
+servers:
+  - url: /api/v1
+tags:
+  - name: blog
+    description: Blog
+paths:
+  /blog/post/{code}:
+    get:
+      tags:
+        - blog
+      operationId: postDetail
+      x-lg-handler: 'App\Http\ApiV1\Controllers\BlogController@postDetail'
+      x-lg-route-name: 'postDetail'
+      x-lg-skip-request-generation: true
+      summary: Получить пост блога
+      description: Получить пост блога
+      parameters:
+        - name: code
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: './blog.yaml#/PostDetailResponse'
+        "404":
+          $ref: '#/components/responses/NotFound'
+        "500":
+          $ref: '#/components/responses/ServerError'
+
+
+components:
+  parameters:
+    QueryInclude:
+      $ref: './common_parameters.yaml#/QueryInclude'
+    PathId:
+      $ref: './common_parameters.yaml#/PathId'
+  schemas:
+    EmptyDataResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          nullable: true
+        meta:
+          type: object
+      required:
+          - data
+    PaginationTypeEnum:
+      $ref: './common_schemas.yaml#/PaginationTypeEnum'
+  responses:
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: './errors.yaml#/ErrorResponse'
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: './errors.yaml#/ErrorResponse'
+    ServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: './errors.yaml#/ErrorResponse'
