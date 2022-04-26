@@ -6,6 +6,7 @@ use Ackintosh\Ganesha;
 use Ackintosh\Ganesha\Builder;
 use Ackintosh\Ganesha\GuzzleMiddleware;
 use Ackintosh\Ganesha\Storage\Adapter\Apcu as ApcuAdapter;
+use App\Support\TelescopeGuzzleMiddleware;
 use Ensi\GuzzleMultibyte\BodySummarizer;
 use Ensi\LaravelInitialEventPropagation\PropagateInitialEventLaravelGuzzleMiddleware;
 use GuzzleHttp\Client;
@@ -56,6 +57,7 @@ class OpenApiClientsServiceProvider extends ServiceProvider
         }
 
         $stack->push(new PropagateInitialEventLaravelGuzzleMiddleware());
+        $stack->push(new TelescopeGuzzleMiddleware(), 'telescope');
 
         return $stack;
     }

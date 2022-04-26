@@ -17,12 +17,13 @@
         "ensi/laravel-serve-swagger": "^0.2.0",
         "ensi/laravel-stdout-logs-helper": "^0.2.0",
         "guzzlehttp/guzzle": "^7.2",
+        "lab/comments-client": "dev-master",
+        "lab/posts-client": "dev-master",
         "laravel/framework": "^9.3",
         "laravel/octane": "^1.2",
+        "laravel/telescope": "^4.8",
         "laravel/tinker": "^2.7",
-        "spatie/laravel-query-builder": "^5.0",
-        "lab/posts-client": "dev-master",
-        "lab/comments-client": "dev-master"
+        "spatie/laravel-query-builder": "^5.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
@@ -92,7 +93,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "laravel/telescope"
+            ]
         }
     },
     "config": {
