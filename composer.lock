@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f9f9b388460e88c44b0b62f14a653fb4",
+    "content-hash": "b19e37f5f53c7142da7aee5cceeb9cb3",
     "packages": [
         {
             "name": "ackintosh/ganesha",
@@ -2007,6 +2007,46 @@
                 }
             ],
             "time": "2022-03-29T20:12:16+00:00"
+        },
+        {
+            "name": "laravel-ensi/monitor",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/home/madridianfox/work/homework/lab/packages/monitor",
+                "reference": "51532b5160efa407b1386920b25ea7a8073fc4b4"
+            },
+            "require": {
+                "ensi/laravel-phprdkafka": "0.2.2",
+                "ensi/laravel-phprdkafka-producer": "0.2.1",
+                "ext-json": "*",
+                "php": "^8"
+            },
+            "require-dev": {
+                "laravel/framework": "^9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ensi\\Monitor\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ivan Koryukov",
+                    "email": "koryukov@greensight.ru"
+                }
+            ],
+            "keywords": [
+                "laravel",
+                "monitoring"
+            ],
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "laravel/framework",
@@ -11728,13 +11768,15 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "lab/comments-client": 20,
         "lab/posts-client": 20,
-        "lab/comments-client": 20
+        "laravel-ensi/monitor": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.1"
+        "php": "^8.1",
+        "ext-rdkafka": "*"
     },
     "platform-dev": [],
     "platform-overrides": {

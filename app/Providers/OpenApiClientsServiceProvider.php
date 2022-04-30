@@ -8,6 +8,7 @@ use Ackintosh\Ganesha\GuzzleMiddleware;
 use Ackintosh\Ganesha\Storage\Adapter\Apcu as ApcuAdapter;
 use Ensi\GuzzleMultibyte\BodySummarizer;
 use Ensi\LaravelInitialEventPropagation\PropagateInitialEventLaravelGuzzleMiddleware;
+use Ensi\Monitor\GuzzleMiddleware as MonitorMiddleware;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\HandlerStack;
@@ -56,6 +57,7 @@ class OpenApiClientsServiceProvider extends ServiceProvider
         }
 
         $stack->push(new PropagateInitialEventLaravelGuzzleMiddleware());
+        $stack->push(new MonitorMiddleware());
 
         return $stack;
     }
